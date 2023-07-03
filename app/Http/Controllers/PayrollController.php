@@ -108,7 +108,7 @@ class PayrollController extends Controller
         $paye = round($paye, 2);
     
         // Pass the calculated PAYE and NHIF to the view
-        return view('payroll.index', compact('taxablePay', 'paye', 'nhif'));
+        return view('payroll.index', compact('grossSalary','taxablePay', 'paye', 'nhif'));
     }
     
     public function calculateNhif($grossSalary)

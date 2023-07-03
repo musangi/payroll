@@ -8,7 +8,7 @@
 </div>
 
 <div class="container">
-    <h2>Payroll Information</h2>
+    <h2>Payroll Information - {{ date('F Y') }}</h2>
     
     <form action="{{ route('payroll.calculate') }}" method="POST">
         @csrf
@@ -22,15 +22,38 @@
     </form>
 
     @if(isset($paye))
-    <div>
+    <div class="col-md-4">
         <h3>PaySlip Information</h3>
-        <p>Your PAYE TAX = {{ $paye }}</p>
-        <p>PAY AFTER TAX= {{ $taxablePay - $paye }}</p>
-        <p>Your NHIF = {{ $nhif }}</p>
-        <p>NET PAY = {{ $taxablePay - $paye - $nhif }}</p>
-
-
-
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount (Ksh)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gross Salary</td>
+                    <td>{{ $grossSalary }}</td>
+                </tr>
+                <tr>
+                    <td>PAYE TAX</td>
+                    <td>{{ $paye }}</td>
+                </tr>
+                <tr>
+                    <td>PAY AFTER TAX</td>
+                    <td>{{ $taxablePay - $paye }}</td>
+                </tr>
+                <tr>
+                    <td>NHIF</td>
+                    <td>{{ $nhif }}</td>
+                </tr>
+                <tr>
+                    <td>NET PAY</td>
+                    <td>{{ $taxablePay - $paye - $nhif }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     @endif
 </div>
