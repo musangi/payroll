@@ -25,7 +25,11 @@
     <div>
         <h3>PaySlip Information</h3>
         <p>Your PAYE TAX = {{ $paye }}</p>
-        <p>Your Net Salary = {{ $grossSalary - $paye }}</p>
+        <p>PAY AFTER TAX= {{ $taxablePay - $paye }}</p>
+        <p>Your NHIF = {{ $nhif }}</p>
+        <p>NET PAY = {{ $taxablePay - $paye - $nhif }}</p>
+
+
 
     </div>
     @endif
